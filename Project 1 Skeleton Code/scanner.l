@@ -19,7 +19,7 @@ using namespace std;
 %option noyywrap
 
 ws			[ \t\r]+
-comment		"//".*\n
+comment		("//".* | "--".*) \n
 line		[\n]
 id			[A-Za-z]([A-Za-z0-9])*
 digit		[0-9]
@@ -45,6 +45,9 @@ punc		[\(\),:;]
 ">"			{ ECHO; return(RELOP); }
 ">="		{ ECHO; return(RELOP); }
 "<="		{ ECHO; return(RELOP); }
+"%"			{ ECHO; return(REMOP); }
+"^"			{ ECHO; return(EXPOP); }
+"~"		{ ECHO; return(NEGOP); }
 begin		{ ECHO; return(BEGIN_); }
 case		{ ECHO; return(CASE); }
 character	{ ECHO; return(CHARACTER); }
