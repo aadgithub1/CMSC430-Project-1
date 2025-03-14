@@ -21,9 +21,10 @@ using namespace std;
 ws			[ \t\r]+
 comment		("//".* | "--".*) \n
 line		[\n]
-id			[A-Za-z]([A-Za-z0-9])*
+id			(?!.*___)[A-Za-z][A-Za-z0-9_]*[A-Za-z0-9]
 digit		[0-9]
 dec			{digit}+
+hex			#([A-Fa-f0-9]+)
 char		'.'
 punc		[\(\),:;]
 %%
@@ -47,7 +48,7 @@ punc		[\(\),:;]
 "<="		{ ECHO; return(RELOP); }
 "%"			{ ECHO; return(REMOP); }
 "^"			{ ECHO; return(EXPOP); }
-"~"		{ ECHO; return(NEGOP); }
+"~"			{ ECHO; return(NEGOP); }
 begin		{ ECHO; return(BEGIN_); }
 case		{ ECHO; return(CASE); }
 character	{ ECHO; return(CHARACTER); }
@@ -75,6 +76,7 @@ when		{ ECHO; return(WHEN); }
 
 {id}		{ ECHO; return(IDENTIFIER);}
 {dec}		{ ECHO; return(INT_LITERAL); }
+{hex}		{ ECHO; return(INT_LITERAL); }
 {char}		{ ECHO; return(CHAR_LITERAL); }
 {punc}		{ ECHO; return(yytext[0]); }
 .			{ ECHO; appendError(LEXICAL, yytext); }
