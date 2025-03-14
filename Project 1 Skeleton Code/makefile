@@ -10,3 +10,6 @@ scanner.c: scanner.l
 
 listing.o: listing.cc listing.h
 	g++ -c listing.cc
+
+clean:
+	rm -f scanner.o scanner.c listing.o lexemes.txt compile
