@@ -20,17 +20,20 @@ using namespace std;
 
 ws			[ \t\r]+
 comment		"//".*\n
+cmnt		"--".*\n
 line		[\n]
-id			[A-Za-z]([A-Za-z0-9])*
+id			[A-Za-z][A-Za-z0-9_]*
 digit		[0-9]
 int			{digit}+
 dec			{digit}+"."{digit}+
+hex			#[A-Fa-f0-9]+
 char		'.'
 punc		[\(\),:;]
 %%
 
 {ws}		{ ECHO; }
 {comment}	{ ECHO; nextLine(); }
+{cmnt}		{ ECHO; nextLine(); }
 {line}		{ ECHO; nextLine(); }
 "+"			{ ECHO; return(ADDOP); }
 "-"			{ ECHO; return(ADDOP); }
@@ -77,6 +80,7 @@ when		{ ECHO; return(WHEN); }
 {id}		{ ECHO; return(IDENTIFIER);}
 {int}		{ ECHO; return(INT_LITERAL); }
 {dec}		{ ECHO; return(INT_LITERAL); }
+{hex}		{ ECHO; return(INT_LITERAL); }
 {char}		{ ECHO; return(CHAR_LITERAL); }
 {punc}		{ ECHO; return(yytext[0]); }
 .			{ ECHO; appendError(LEXICAL, yytext); }
