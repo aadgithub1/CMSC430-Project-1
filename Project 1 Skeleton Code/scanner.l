@@ -19,12 +19,12 @@ using namespace std;
 %option noyywrap
 
 ws			[ \t\r]+
-comment		("//".* | "--".*) \n
+comment		"//".*\n
 line		[\n]
-id			(?!.*___)[A-Za-z][A-Za-z0-9_]*[A-Za-z0-9]
+id			[A-Za-z]([A-Za-z0-9])*
 digit		[0-9]
-dec			{digit}+
-hex			#([A-Fa-f0-9]+)
+int			{digit}+
+dec			{digit}+"."{digit}+
 char		'.'
 punc		[\(\),:;]
 %%
@@ -75,8 +75,8 @@ then		{ ECHO; return(THEN); }
 when		{ ECHO; return(WHEN); }
 
 {id}		{ ECHO; return(IDENTIFIER);}
+{int}		{ ECHO; return(INT_LITERAL); }
 {dec}		{ ECHO; return(INT_LITERAL); }
-{hex}		{ ECHO; return(INT_LITERAL); }
 {char}		{ ECHO; return(CHAR_LITERAL); }
 {punc}		{ ECHO; return(yytext[0]); }
 .			{ ECHO; appendError(LEXICAL, yytext); }
