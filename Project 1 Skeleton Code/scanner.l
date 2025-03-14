@@ -27,7 +27,9 @@ digit		[0-9]
 int			{digit}+
 dec			{digit}+"."{digit}+
 hex			#[A-Fa-f0-9]+
+real		{digit}*"."{digit}+((e|E)("+"|-)*([0-9])+)*
 char		'.'
+schar		["'\\b'"|"'\\t'"|"'\\n'"|"'\\r'"|"'\\f'"|]
 punc		[\(\),:;]
 %%
 
@@ -81,7 +83,9 @@ when		{ ECHO; return(WHEN); }
 {int}		{ ECHO; return(INT_LITERAL); }
 {dec}		{ ECHO; return(INT_LITERAL); }
 {hex}		{ ECHO; return(INT_LITERAL); }
+{real}		{ ECHO; return(REAL_LITERAL); }
 {char}		{ ECHO; return(CHAR_LITERAL); }
+{schar}		{ ECHO; return(CHAR_LITERAL); }
 {punc}		{ ECHO; return(yytext[0]); }
 .			{ ECHO; appendError(LEXICAL, yytext); }
 %%
