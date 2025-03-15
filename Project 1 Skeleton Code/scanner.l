@@ -22,7 +22,7 @@ ws			[ \t\r]+
 comment		"//".*\n
 cmnt		"--".*\n
 line		[\n]
-id			[A-Za-z][A-Za-z0-9_]*
+id			([A-Za-z]|[A-Za-z][A-Za-z0-9]*_{0,2}[A-Za-z0-9]+_{0,2}[A-Za-z0-9]+_{0,2}[A-Za-z0-9]+|[A-Za-z][A-Za-z0-9]*_{0,2}[A-Za-z0-9]+|[A-Za-z][A-Za-z0-9]+)
 digit		[0-9]
 int			{digit}+
 dec			{digit}+"."{digit}+
