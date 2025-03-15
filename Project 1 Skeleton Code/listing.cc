@@ -40,14 +40,16 @@ void nextLine()
 int lastLine()
 {
 	printf("\n\n");
-	printf(
-		"Lexical Errors: %d\n"
-		"Syntactic Errors: %d\n"
-		"Semantic Errors: %d\n", lexErrors, synErrors, semErrors
-	);
+	
 	
 	if(lexErrors == 0 && synErrors == 0 && semErrors == 0){
 		printf("Compiled Successfully.     \n");
+	} else{
+		printf(
+			"Lexical Errors: %d\n"
+			"Syntactic Errors: %d\n"
+			"Semantic Errors: %d\n", lexErrors, synErrors, semErrors
+		);
 	}
 
 	return totalErrors;
