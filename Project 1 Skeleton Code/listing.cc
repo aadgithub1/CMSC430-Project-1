@@ -41,12 +41,18 @@ int lastLine()
 {
 	printf("\r");
 	if(lexErrors != 0){
-		printf("There is/are %d error(s).", lexErrors);
-	} else if(synErrors != 0){
-		printf("There is/are %d error(s).", synErrors);
-	} else if(semErrors != 0){
-		printf("There is/are %d error(s).", semErrors);
-	} else{
+		printf("There is/are %d lexical error(s).\n", lexErrors);
+	}
+	
+	if(synErrors != 0){
+		printf("There is/are %d syntactic error(s).\n", synErrors);
+	}
+	
+	if(semErrors != 0){
+		printf("There is/are %d semantic error(s).\n", semErrors);
+	}
+	
+	if(lexErrors == 0 && synErrors == 0 && semErrors == 0){
 		printf("Compiled Successfully.     \n");
 	}
 
@@ -60,23 +66,22 @@ void appendError(ErrorCategories errorCategory, string message)
 		"Semantic Error, Undeclared " 
 	};
 
-	string errorToPush = messages[errorCategory] + message;
 
 	if(errorCategory == LEXICAL){
 		totalErrors++;
 		lexErrors++;
-		errors.push_back(message);
+		errors.push_back(messages[errorCategory] + message);
 	} else if(errorCategory == SYNTAX){
 		totalErrors++;
 		synErrors++;
-		errors.push_back(message);
+		errors.push_back(messages[errorCategory] + message);
 	} else if(
 		errorCategory == GENERAL_SEMANTIC ||
 		errorCategory == DUPLICATE_IDENTIFIER ||
 		errorCategory == UNDECLARED){
 			totalErrors++;
 			semErrors++;
-			errors.push_back(message);
+			errors.push_back(messages[errorCategory] + message);
 		}
 }
 
