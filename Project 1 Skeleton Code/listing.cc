@@ -1,10 +1,7 @@
-// CMSC 430 Compiler Theory and Design
-// Project 1 Skeleton
-// UMGC CITE
-// Summer 2023
+//Aaron Webb 
+//CMSC 430 Compiler Theory and Design
+// CMSC430 Project 1
 
-// This file contains the bodies of the functions that produces the 
-// compilation listing
 
 #include <cstdio>
 #include <string>
@@ -41,7 +38,7 @@ int lastLine()
 {
 	printf("\n\n");
 	
-	
+	//track each error type
 	if(lexErrors == 0 && synErrors == 0 && semErrors == 0){
 		printf("Compiled Successfully.     \n");
 	} else{
