@@ -1,9 +1,9 @@
-// CMSC 430 Compiler Theory and Design
-// Project 1 Skeleton
-// UMGC CITE
-// Summer 2023
+/* Aaron Webb
+   Project 1 - Lexical Analysis
+   March 16, 2025
+   Professor Bill Dulmage*/
 
-// This file contains the function prototypes for the functions that produce
+// This file contains the function prototypes for functions that produce
 // the compilation listing
 
 enum ErrorCategories {LEXICAL, SYNTAX, GENERAL_SEMANTIC, DUPLICATE_IDENTIFIER,

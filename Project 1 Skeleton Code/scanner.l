@@ -1,9 +1,23 @@
-/* CMSC 430 Compiler Theory and Design
-   Project 1 Skeleton
-   UMGC CITE
-   Summer 2023 */
+/* Aaron Webb
+   Project 1 - Lexical Analysis
+   March 16, 2025
+   Professor Bill Dulmage*/
 
-/* This file contains flex input file */
+/* This file contains the Flex specification used 
+ for lexical analysis in the compiler project. It defines 
+ the rules and patterns by which the input source code 
+ is scanned and transformed into tokens. It provides regular 
+ expressions that 
+ match different lexical elements such as whitespace, 
+ comments (// or --), identifiers, and numeric constants 
+ (e.g., integers, decimals, hexadecimal, and real numbers). 
+ Each pattern either echoes the matched text and returns an
+ associated token, or calls appendError(LEXICAL, ...) 
+ if an unrecognized character is encountered. Finally,
+ the main function initializes the listing mechanism with firstLine(),
+ reads tokens by repeatedly calling yylex(), logs them to a file
+ (lexemes.txt), and finishes by invoking lastLine() to display a 
+ summary of any errors.*/
 
 %{
 #include <cstdio>

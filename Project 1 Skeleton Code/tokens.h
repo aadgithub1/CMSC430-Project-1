@@ -1,7 +1,7 @@
-// CMSC 430 Compiler Theory and Design
-// Project 1 Skeleton
-// UMGC CITE
-// Summer 2023
+/* Aaron Webb
+   Project 1 - Lexical Analysis
+   March 16, 2025
+   Professor Bill Dulmage*/
 
 // This file contains the enumerated type definition for tokens
 
